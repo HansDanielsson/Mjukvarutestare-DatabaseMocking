@@ -16,7 +16,7 @@ const syncDatabase = require('./dbSync');
 })()
 
 document.getElementById('btnsend').addEventListener('click', async () => {
-  // Hämta data från inut fält
+  // Hämta data från input fält
   const name = document.getElementById('name').value
   const email = document.getElementById('email').value
 
