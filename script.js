@@ -15,8 +15,7 @@ const syncDatabase = require('./dbSync');
   */
 })()
 
-document.getElementById('btnSend').addEventListener('click', async () => {
-
+document.getElementById('btnsend').addEventListener('click', async () => {
   // Hämta data från inut fält
   const name = document.getElementById('name').value
   const email = document.getElementById('email').value
@@ -24,5 +23,5 @@ document.getElementById('btnSend').addEventListener('click', async () => {
   // Skapa en ny användare
   const user = await createUser(name, email) // Anropa vår ServiceKlass för att lägga till ny användare
   console.log('Ny användare skapad:', user.toJSON())
-  document.getElementById('newUserOutput').innerText = ('Ny användare skapad:', user.toJSON())
+  document.getElementById('newuseroutput').innerText = ('Ny användare skapad:', user.toJSON())
 })
