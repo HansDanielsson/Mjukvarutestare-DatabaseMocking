@@ -1,12 +1,12 @@
 const sequelize = require('./dbConnect')
 
 // Function för att synkronisera modellen
-async function syncDatabase() {
+async function syncDatabase () {
   try {
     await sequelize.authenticate()
     console.log('Sequelize-anslutning lyckades!')
     await sequelize.sync({ force: false }) // Skapar tabellen om den inte finns
-    console.log('Databasen synkroniserades.')
+    console.log('Modellen synkroniserades!')
   } catch (error) {
     console.error('Kunde inte synkronisera modellen:', error)
   }
