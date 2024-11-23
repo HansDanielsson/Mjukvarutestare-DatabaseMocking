@@ -5,7 +5,7 @@ const syncDatabase = require('./dbSync');
   await syncDatabase() // För att synka databasen med vår modell
 
   // Skapa en ny användare
-  const user = await createUser('Test5', 'test5@example.com') // Anropa vår ServiceKlass för att lägga till ny användare
+  const user = await createUser('Test6', 'test6@example.com') // Anropa vår ServiceKlass för att lägga till ny användare
   console.log('Ny användare skapad:', user.toJSON())
 
   // Hämta alla användare
