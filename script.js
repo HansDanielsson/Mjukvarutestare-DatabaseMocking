@@ -4,6 +4,7 @@ const syncDatabase = require('./dbSync');
 (async () => {
   await syncDatabase() // För att synka databasen med vår modell
 
+  /*
   // Skapa en ny användare
   const user = await createUser('Test6', 'test6@example.com') // Anropa vår ServiceKlass för att lägga till ny användare
   console.log('Ny användare skapad:', user.toJSON())
@@ -11,4 +12,17 @@ const syncDatabase = require('./dbSync');
   // Hämta alla användare
   const users = await getAllUsers() // Anropa vår Serviceklass för att hämta alla användare
   console.log('Alla användare:', users.map((u) => u.toJSON()))
+  */
 })()
+
+document.getElementById('btnSend').addEventListener('click', async () => {
+
+  // Hämta data från inut fält
+  const name = document.getElementById('name').value
+  const email = document.getElementById('email').value
+
+  // Skapa en ny användare
+  const user = await createUser(name, email) // Anropa vår ServiceKlass för att lägga till ny användare
+  console.log('Ny användare skapad:', user.toJSON())
+  document.getElementById('newUserOutput').innerText = ('Ny användare skapad:', user.toJSON())
+})
