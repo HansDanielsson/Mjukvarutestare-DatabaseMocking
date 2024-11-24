@@ -3,7 +3,6 @@ const { createUser, getAllUsers } = require('./dbService')
 
 jest.mock('./Models/user') // Gör alla instanser av User till en mockad version
 describe('Tester mot Databas', () => {
-
   afterEach(() => {
     jest.clearAllMocks() // Töm mockade metoder
   })
@@ -16,7 +15,7 @@ describe('Tester mot Databas', () => {
     // Kör funktionen och verifiera
     const result = await createUser('Test10', 'Test10@exampel.com')
     expect(User.create).toHaveBeenCalledTimes(1)
-    expect(User.create).toHaveBeenCalledWith({name: 'Test10', email: 'Test10@exampel.com'})
+    expect(User.create).toHaveBeenCalledWith({ name: 'Test10', email: 'Test10@exampel.com' })
     expect(result).toEqual(mockUser)
   })
 
@@ -32,5 +31,24 @@ describe('Tester mot Databas', () => {
     const result = await getAllUsers()
     expect(User.findAll).toHaveBeenCalledTimes(1)
     expect(result).toEqual(mockUsers)
+  })
+
+  test('getAllUsers ska hantera ett tomt resultat', async () => {
+    // Mockad att databasen är tom
+    User.findAll.mockResolvedValue([])
+
+    // Kör funktionen och verifiera
+    const result = await getAllUsers()
+    expect(User.findAll).toHaveBeenCalledTimes(1)
+    expect(result).toEqual([])
+  })
+
+  test('createUser ska hantera fel vid databasoperation', async () => {
+    // Mockad ett fel från User.create
+    User.create.mockRejectedValue(new Error('Databasfel'))
+
+    // Kör funktionen och verifiera att den kastar ett fel
+    await expect(createUser('Test1', 'test1@example.com')).rejects.toThrowError('Databasfel')
+    expect(User.create).toHaveBeenCalledTimes(1)
   })
 })
