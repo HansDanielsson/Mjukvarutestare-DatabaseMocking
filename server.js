@@ -18,11 +18,10 @@ application.listen(portNr, () => {
 
 // Get-request på root-address för att returnera index.html
 application.get('', (req, res) => {
-  // Returnera Hello World
-  // res.send('Hejsan')
   res.sendFile('./index.html', { root: __dirname })
 })
 
+ /*
 application.post('/data', (req, res) => {
   // Denna payload innehåller 2 st attribut, name och age
   const data = req.body
@@ -70,3 +69,4 @@ application.get('/about', (req, res) => {
 application.get('/script', (req, res) => {
   res.sendFile('./script.js', { root: __dirname })
 })
+*/
