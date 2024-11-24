@@ -21,7 +21,7 @@ application.get('', (req, res) => {
   res.sendFile('./index.html', { root: __dirname })
 })
 
- /*
+/*
 application.post('/data', (req, res) => {
   // Denna payload innehåller 2 st attribut, name och age
   const data = req.body

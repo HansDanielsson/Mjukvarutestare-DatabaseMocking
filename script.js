@@ -1,4 +1,4 @@
-const { createUser, getAllUsers } = require('./dbService')
+const { createUser } = require('./dbService')
 const syncDatabase = require('./dbSync');
 
 (async () => {
