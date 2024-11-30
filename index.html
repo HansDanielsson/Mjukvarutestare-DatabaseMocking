@@ -8,17 +8,20 @@
   <body>
     <h1>Databas</h1>
     <div>
-      <div>
-        <label for="name">Skriv ditt namn:</label>
-        <input type="text" name="name" id="name" />
-      </div>
-      <div>
-        <label for="email">Skriv din e-post</label>
-        <input type="email" name="email" id="email" />
-      </div>
-      <button id="btnsend">Skicka iväg data</button>
+      <form action="/addUser" method="post">
+        <div>
+          <label for="name">Skriv ditt namn:</label>
+          <input type="text" name="name" id="name" />
+        </div>
+        <div>
+          <label for="email">Skriv din epost</label>
+          <input type="email" name="email" id="email" />
+        </div>
+        <button type = "submit">Skicka iväg data</button>
+      </form>
     </div>
-    <div id="newuseroutput"></div>
-    <script src="script.js"></script>
+
+    <div id="usersoutput"></div>
+    <script src="/script"></script>
   </body>
 </html>

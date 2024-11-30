@@ -1,10 +1,9 @@
 // Fil för attt hantera Express server
 const express = require('express')
 const bodyParser = require('body-parser')
-const fs = require('fs')
+const { createUser, getAllUsers } = require('./dbService')
 
 const portNr = 5000
-const filePath = './jsonData.json'
 
 // Konfigurera server med Body-parser
 const application = new express()
@@ -21,52 +20,31 @@ application.get('', (req, res) => {
   res.sendFile('./index.html', { root: __dirname })
 })
 
-/*
-application.post('/data', (req, res) => {
-  // Denna payload innehåller 2 st attribut, name och age
-  const data = req.body
-
-  // console.log(data)
-  // Skriver ut data till konsol
-  console.log(data.name)
-  console.log(data.age)
-
-  // Hämta befintlig data från .json fil
-  fs.readFile(filePath, 'utf-8', (err, fetchJson) => {
-    if (err) console.error(err)
-
-    let lista = JSON.parse(fetchJson)
-
-    // Append Post-Payload till lista
-    lista.push(data)
-
-    // Spara lista till .json fil
-    fs.writeFile(filePath, JSON.stringify(lista, null, 2), (err) => {
-      // Om error, skriv ut error
-      if (err) console.error(err)
-    })
-  })
-
-  // Retunerar meddelande till klient
-  res.send(`Hejsan ${data.name}, du är ${data.age} år gammal`)
-})
-
-// Get-Endpoint som returnerar JSON data
-application.get('/data', (req, res) => {
-  // Hämta JSON data från fil
-  fs.readFile(filePath, 'utf-8', (err, fetchJson) => {
-    if (err) res.send(err)
-
-    res.send(fetchJson)
-  })
-})
-
-// Get-Endpoint för About.html
-application.get('/about', (req, res) => {
-  res.sendFile('./about.html', { root: __dirname })
-})
-
 application.get('/script', (req, res) => {
   res.sendFile('./script.js', { root: __dirname })
 })
-*/
+
+application.post('/addUser', async (req, res) => {
+  // Hämta data från Payload
+  const data = req.body
+
+  // Spara data till databas
+  let respUser = await createUser(data.name.trim(), data.email.trim())
+
+  console.log('Ny användare skapad: ', respUser.toJSON())
+
+  // Returnera respons till User
+  // res.sendFile('./index.html', {root: __dirname })
+  res.redirect('/')
+})
+
+// Get Endpoint för att hämta all data från DB
+  application.get('/getAllUsers', async (req, res) => {
+
+    // Hämta data från DFatabasen
+    let users = await getAllUsers()
+
+    // console.log(users)
+
+    res.send(users)
+  })
