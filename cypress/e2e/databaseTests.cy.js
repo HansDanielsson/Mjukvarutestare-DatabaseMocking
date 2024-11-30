@@ -1,7 +1,6 @@
 const dbConnect = require('./dbConnect')
 
 describe('Tester mot Databas', () => {
-
   beforeEach(() => {
     cy.visit('/') // Öppnar hemsidan
   })
@@ -11,7 +10,6 @@ describe('Tester mot Databas', () => {
   })
 
   it('Skapa en ny Post i Databas', () => {
-    // cy.visit('https://example.cypress.io')
     cy.get('#name').type('Test44')
     cy.get('#email').type('Test44@example.cypress.io')
 

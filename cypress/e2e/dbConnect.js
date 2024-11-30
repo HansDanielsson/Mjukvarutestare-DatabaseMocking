@@ -19,7 +19,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   user: 'Hans',
   password: 'Internet2024!',
-  database:'medie',
+  database: 'medie',
   connectTimeout: 10 // Maximum numbers of connections in the pool
 })
 module.exports = pool
