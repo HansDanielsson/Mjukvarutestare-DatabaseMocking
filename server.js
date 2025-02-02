@@ -40,7 +40,7 @@ application.post('/addUser', async (req, res) => {
 
 // Get Endpoint för att hämta all data från DB
 application.get('/getAllUsers', async (req, res) => {
-  // Hämta data från DFatabasen
+  // Hämta data från Databasen
   let users = await getAllUsers()
 
   // console.log(users)

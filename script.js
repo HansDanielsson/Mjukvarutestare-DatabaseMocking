@@ -1,11 +1,13 @@
-// const { createUser } = require('./dbService')
-// const syncDatabase = require('./dbSync.js');
-/*
+const { createUser, getAllUsers } = require('./dbService')
+const syncDatabase = require('./dbSync.js');
+
 (async () => {
+  console.log('syncDatabase')
   await syncDatabase() // För att synka databasen med vår modell
 
+  console.log('skapa user')
   // Skapa en ny användare
-  const user = await createUser('Test6', 'test6@example.com') // Anropa vår ServiceKlass för att lägga till ny användare
+  const user = await createUser('Test66', 'test66@example.com') // Anropa vår ServiceKlass för att lägga till ny användare
   console.log('Ny användare skapad:', user.toJSON())
 
   // Hämta alla användare
@@ -13,7 +15,7 @@
   console.log('Alla användare:', users.map((u) => u.toJSON()))
 
 })()
-
+/*
 document.getElementById('btnsend').addEventListener('click', async () => {
   // Hämta data från input fält
   const name = document.getElementById('name').value
@@ -24,7 +26,7 @@ document.getElementById('btnsend').addEventListener('click', async () => {
   console.log('Ny användare skapad:', user.toJSON())
   document.getElementById('newuseroutput').innerText = ('Ny användare skapad:', user.toJSON())
 })
-*/
+
 
 // Function för att hämta DB data och skriva ut den i tabell
 (async () => {
@@ -81,3 +83,4 @@ document.getElementById('btnsend').addEventListener('click', async () => {
   // Lägg till table i HTML-dokumentet
   document.getElementById('usersoutput').appendChild(table)
 })()
+*/
